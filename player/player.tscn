@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://q6gfwjhnq5t6"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_6cds1"]
+[ext_resource type="Shader" uid="uid://dfhe4d5e472j4" path="res://player/player.tres" id="2_ie2t8"]
+[ext_resource type="VideoStream" path="res://assets/pet.ogv" id="2_tbvs6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tpntq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbees"]
+shader = ExtResource("2_ie2t8")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_6cds1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_tpntq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.508113, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_qbees")
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -244.0
+offset_top = -425.0
+offset_right = 524.0
+offset_bottom = 375.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 0.105959
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+stream = ExtResource("2_tbvs6")
+autoplay = true
+loop = true
